@@ -6,7 +6,17 @@ let n=-1;  // no. of iterartion starting from 0
 let A=[];  // stores random pic values
 let ran=[]; // stores random postion in  matrix
 
-//  localStorage.clear();
+window.addEventListener("load",()=>{
+    // let root=document.querySelector(":root");
+    // root.style.setProperty('--grid-temp',"repeat("+grid+"/fr)");
+    for(let i=1;i<=grid2;i++){
+          document.getElementById(i).classList.remove("hide");      
+    }  
+});
+
+
+
+
 // game start function
 function start(){
     time=60;
@@ -33,7 +43,7 @@ function display(){
         box.childNodes[i].style.backgroundImage=null;
     }
     for(let i=0;i<=n+2;i++){
-        box.childNodes[ran[i]].style.backgroundImage="url('./images/animal"+A[i]+".png')";
+        box.childNodes[ran[i]].style.backgroundImage="url('./images1/animal"+A[i]+".png')";
     }
 }
 
@@ -59,22 +69,18 @@ box.addEventListener("click",(event)=>{
     }
     if(n){
         if(event.srcElement.attributes.id==box.childNodes[lastRandom].firstChild.parentElement.attributes.id){
-            if(count==(grid2-3)){
-                count++;
-                // alert("YOU WIN");
-                console.log("you win");
+            count+=10;
+            if((count/10)==(grid2-2)){
+                sweetAlert("You Win");;
                 startFresh();
             }else{
-                console.log("right");
-                score.innerHTML=++count;
+                score.innerHTML=count;
                 display(); 
             }
         }
         else{  
-            // alert("Game over\nYour Score:"+count);
-            console.log("Game over\nYour Score:"+count);
+            sweetAlert("Game Over!");
             startFresh();
-            // location.reload();
             n--;
         }
     }
@@ -120,9 +126,8 @@ function countdown(){
             timer.innerHTML=time--;
         }
         else{
-            alert("times up");
+            sweetAlert("Times Up!");
             startFresh();
-            // location.reload();
         }
         
     },1000);
@@ -146,16 +151,21 @@ function checkAttempt(){
         li.innerHTML="<strong>"+attempt[i]+" in "+(60-time)+" seconds</strong>";
         attemp.appendChild(li);
     }
-    attemptCount++;
-   
+    attemptCount++;  
 }
-
 function reinitialise(){
     clearInterval(interval);
     n=-1;
     A=[]; 
     count=0;
 }
+
+function sweetAlert(msg){
+    swal(msg, "Your Score:"+count);
+}
+
+
+
 
 
 
