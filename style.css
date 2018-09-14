@@ -1,5 +1,5 @@
 :root{
-    --grid-temp: repeat(3,1fr);
+    --grid-temp: repeat(5,1fr);
     --dimension: 600px;
 }
 body{

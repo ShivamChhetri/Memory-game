@@ -1,5 +1,5 @@
 let box=document.getElementById("grid-box");  // grid boxes
-let grid=3;
+let grid=5;
 let grid2=grid*grid;
 let lastRandom;  // stores the position of last picture
 let n=-1;  // no. of iterartion starting from 0
