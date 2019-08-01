@@ -33,8 +33,8 @@
         accu.innerHTML="accuracy:"+position.coords.accuracy;
         console.log(position);
     }
-    function positionError(){
-        console.log("position couldn't be found");
+    function positionError(err){
+        console.log("position couldn't be found "+err);
     }
 </script>
 </html>
