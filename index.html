@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Location</title>
+</head>
+<body>
+       <ul>
+           <li id="lat"></li>
+           <li id="long"></li>
+           <li id="accu"></li>
+       </ul>
+</body>
+<script>
+    let lat= document.getElementById("lat");
+    let long= document.getElementById("long");
+    let accu= document.getElementById("accu");
+    let geo_options = {
+        enableHighAccuracy: true, 
+        // maximumAge        : 30000, 
+        // timeout           : 27000
+    };
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showPosition,positionError,geo_options);
+    }else{
+        console.log("browser doesn't support geolocation");
+    }
+    function showPosition(position){
+        lat.innerHTML="latitude:"+position.coords.latitude;
+        long.innerHTML="longitude:"+position.coords.longitude;
+        accu.innerHTML="accuracy:"+position.coords.accuracy;
+        console.log(position);
+    }
+    function positionError(){
+        console.log("position couldn't be found");
+    }
+</script>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -97,3 +141,4 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./main.js"></script>
 </html>
+ -->
