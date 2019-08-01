@@ -23,7 +23,7 @@
         // timeout           : 27000
     };
     if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(showPosition,positionError,geo_options);
+        navigator.geolocation.watchPosition(showPosition,positionError,geo_options);
     }else{
         console.log("browser doesn't support geolocation");
     }
